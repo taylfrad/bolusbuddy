@@ -1,0 +1,8 @@
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+select = ["E", "F", "I", "UP", "B"]
+exclude = ["backend/.venv", "backend/__pycache__"]
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
