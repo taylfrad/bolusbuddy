@@ -1,0 +1,21 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: bolusbuddy-api
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/minScale: "0"
+        autoscaling.knative.dev/maxScale: "1"
+        run.googleapis.com/cpu-throttling: "true"
+    spec:
+      containers:
+        - image: gcr.io/PROJECT_ID/bolusbuddy-api
+          env:
+            - name: USDA_API_KEY
+              value: ""
+          resources:
+            limits:
+              cpu: "1"
+              memory: "512Mi"
